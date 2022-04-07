@@ -1,20 +1,6 @@
 <?php
-	$paragraph =
-		"Sempre caro mi fu quest'ermo colle,
-		e questa siepe, che da tanta parte
-		dell'ultimo orizzonte il guardo esclude.
-		Ma sedendo e mirando, interminati
-		spazi di là da quella, e sovrumani
-		silenzi, e profondissima quïete
-		io nel pensier mi fingo, ove per poco
-		il cor non si spaura. E come il vento
-		odo stormir tra queste piante, io quello
-		infinito silenzio a questa voce
-		vo comparando: e mi sovvien l'eterno,
-		e le morte stagioni, e la presente
-		e viva, e il suon di lei. Così tra questa
-		immensità s'annega il pensier mio:
-		e il naufragar m'è dolce in questo mare.";
+	include 'poems.php';
+	$random = rand(0, count($poems) - 1);
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +17,9 @@
 		padding: 0;
 		box-sizing: border-box;
 	}
+	html {
+		font-family: Verdana, sans-serif;
+	}
 	body {
 		padding: 2rem;
 		width: fit-content;
@@ -46,17 +35,17 @@
 </style>
 <body>
 
-<h1>L'infinito</h1>
+<h1><?php echo $titles[$random] ?></h1>
 <small>Giacomo Leopardi</small>
 <p>
 	<?php 
 		if (isset($_GET["badword"])) {
-			echo str_replace($_GET["badword"], "***", $paragraph);
-		} else echo $paragraph
+			echo str_replace($_GET["badword"], "***", $poems[$random]);
+		} else echo $poems[$random];
 	?>		
 </p>
 <div>
-	Lunghezza paragrafo: <?php echo strlen($paragraph) ?>
+	Lunghezza paragrafo: <?php echo strlen($poems[$random]) ?>
 </div>
 </body>
 
