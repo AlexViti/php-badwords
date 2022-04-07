@@ -1,6 +1,8 @@
 <?php
 	include 'poems.php';
 	$random = rand(0, count($poems) - 1);
+	$poem = $poems[$random];
+	$trimmed_poem = str_replace(" ", "", $poem);
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +33,7 @@
 	}
 	div{
 		margin-top: 2rem;
+		white-space: pre-line;
 	}
 </style>
 <body>
@@ -40,12 +43,13 @@
 <p>
 	<?php 
 		if (isset($_GET["badword"])) {
-			echo str_replace($_GET["badword"], "***", $poems[$random]);
-		} else echo $poems[$random];
+			echo str_replace($_GET["badword"], "***", $poem);
+		} else echo $poem;
 	?>		
 </p>
 <div>
-	Lunghezza paragrafo: <?php echo strlen($poems[$random]) ?>
+Numeri di caratteri: <?php echo strlen($trimmed_poem) ?> 
+Numero di parole: <?php echo count(explode(" ", $poem)) ?>
 </div>
 </body>
 
