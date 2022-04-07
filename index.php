@@ -14,7 +14,7 @@
 		e le morte stagioni, e la presente
 		e viva, e il suon di lei. Così tra questa
 		immensità s'annega il pensier mio:
-		e il naufragar m'è dolce in questo mare."
+		e il naufragar m'è dolce in questo mare.";
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +49,11 @@
 <h1>L'infinito</h1>
 <small>Giacomo Leopardi</small>
 <p>
-	<?php echo $paragraph ?>		
+	<?php 
+		if (isset($_GET["badword"])) {
+			echo str_replace($_GET["badword"], "***", $paragraph);
+		} else echo $paragraph
+	?>		
 </p>
 <div>
 	Lunghezza paragrafo: <?php echo strlen($paragraph) ?>
